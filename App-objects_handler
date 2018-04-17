@@ -1,0 +1,55 @@
+var app = {
+    db: {},
+    next_id: 0,
+    create: function(newThing) {
+        // this.db[this.next_id] = newThing;
+        // this.next_id ++;
+        if(newThing !== ''){
+        	this.db[this.next_id] = newThing;
+        	this.next_id ++;
+        	console.log("THING WAS ADDED")
+        	return 'THING WAS ADDED';
+        }else{
+        	console.log("ERROR")
+        	return 'new value was an empty string, nopes.';
+        }
+    },
+    read: function(ID) {
+        if(this.db[ID]){
+        	return this.db[ID]; 
+        } else {
+        	return 'NOT FOUND';  
+        }
+    },
+    update: function(ID, new_value) {
+        var returner = '';
+        if (this.db[ID] && new_value !== ""){
+            returner ='All good';
+        } else if (this.db[ID] && new_value === ""){
+            returner ='Bad input';
+        } else if (this.db[ID] !==undefined && new_value !== ""){
+            returner ='Bad id';
+        } else{
+            returner ='Bad id & bad input';
+        }  
+	    return returner
+    },
+    delete: function(ID) {
+		if(this.db[ID]){
+			this.db[ID] = undefined;
+			console.log('item WAS DELETED');
+		} else{
+			console.log('UNKNOWN ID');
+		}
+    }
+};
+
+console.log(app.update(0, "Marta"));
+
+function app_handler() {
+	// read user input from dom
+
+	var result = app.create(user_input);
+
+	// write result to dom
+}
