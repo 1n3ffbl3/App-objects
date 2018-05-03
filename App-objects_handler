@@ -52,4 +52,7 @@ function app_handler() {
 	var result = app.create(user_input);
 
 	// write result to dom
-}
+};
+
+module.exports = app;
+
